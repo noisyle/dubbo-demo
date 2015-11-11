@@ -8,6 +8,6 @@
 
 	<dubbo:application name="server" />
 	<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" check="false" />
-	<dubbo:protocol name="dubbo" port="20880" />
+	<dubbo:protocol name="dubbo" port="-1" />
 	<dubbo:service interface="com.noisyle.dubbodemo.service.DemoService" ref="demoService" />
 </beans>
