@@ -1,24 +1,30 @@
 package com.noisyle.dubbodemo.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.noisyle.dubbodemo.service.DemoService;
 
 @Controller
 public class DemoController {
+	Logger logger = Logger.getLogger(DemoController.class);
+	
 	@Autowired
 	private DemoService demoService;
-
-	@RequestMapping(value = "test", produces = "text/plain;charset=UTF-8")
-	public @ResponseBody String test(@RequestParam(required = false, defaultValue = "world") String str) {
+	
+	@RequestMapping(value = "test")
+	public String test(Model model, @RequestParam(required = false, defaultValue = "") String name) {
 		try {
-			return demoService.test(str);
+			model.addAttribute("msg", demoService.test(name));
+			logger.info("result : " + demoService.test(name));
+			return "index";
 		} catch (Exception e) {
-			return e.getMessage();
+			model.addAttribute("msg", e.getMessage());
+			return "index";
 		}
 	}
 }
