@@ -20,7 +20,7 @@ public class DemoController {
 	public String test(Model model, @RequestParam(required = false, defaultValue = "") String name) {
 		try {
 			model.addAttribute("msg", demoService.test(name));
-			logger.info("result : " + demoService.test(name));
+			logger.info("Response: " + demoService.test(name));
 			return "index";
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());

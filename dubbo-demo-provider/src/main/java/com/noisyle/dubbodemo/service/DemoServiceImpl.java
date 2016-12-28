@@ -7,12 +7,11 @@ import org.springframework.stereotype.Service;
 public class DemoServiceImpl implements DemoService {
 	Logger logger = Logger.getLogger(DemoServiceImpl.class);
 
-	public String test(String str) {
-		if(str.length()==0){
+	public String test(String name) {
+		logger.info("Request: " + name);
+		if(name.length()==0){
 			throw new RuntimeException("Please input a name.");
 		}
-		String result = "hello " + str + "!";
-		logger.info("result : " + result);
-		return result;
+		return "hello " + name + "!";
 	}
 }
