@@ -1,6 +1,7 @@
 package com.noisyle.dubbodemo.controller;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,7 @@ import com.noisyle.dubbodemo.service.DemoService;
 
 @Controller
 public class DemoController {
-	Logger logger = Logger.getLogger(DemoController.class);
+	final private static Logger logger = LoggerFactory.getLogger(DemoController.class);
 	
 	@Autowired
 	private DemoService demoService;
@@ -19,11 +20,13 @@ public class DemoController {
 	@RequestMapping(value = "test")
 	public String test(Model model, @RequestParam(required = false, defaultValue = "") String name) {
 		try {
-			model.addAttribute("msg", demoService.test(name));
-			logger.info("Response: " + demoService.test(name));
+			String msg = demoService.test(name);
+			model.addAttribute("msg", msg);
+			logger.info("Response: {}", msg);
 			return "index";
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());
+			logger.info("Error: ", e);
 			return "index";
 		}
 	}
