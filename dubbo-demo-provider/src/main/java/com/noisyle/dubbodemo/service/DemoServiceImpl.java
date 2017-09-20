@@ -13,7 +13,7 @@ public class DemoServiceImpl implements DemoService {
 	@Autowired
 	private DemoDao demoDao;
 
-	public String test(String name) {
+	public String test(String name) throws Exception {
 		logger.info("Request: {}", name);
 		String str = null;
 		try {
