@@ -51,7 +51,7 @@
 			<groupId>com.101tec</groupId>
 			<artifactId>zkclient</artifactId>
 		</dependency>
-		
+
 		<!-- redis注册中心 -->
 		<!--
 		<dependency>
@@ -82,7 +82,7 @@
 						<port>8083</port>
 					</httpConnector>
 					<webApp>
-						<contextPath>/${project.artifactId}</contextPath>
+						<contextPath>/</contextPath>
 					</webApp>
 				</configuration>
 			</plugin>

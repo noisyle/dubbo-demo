@@ -17,7 +17,7 @@ public class DemoController {
 	@Autowired
 	private DemoService demoService;
 	
-	@RequestMapping(value = "test")
+	@RequestMapping(value = "/")
 	public String test(Model model, @RequestParam(required = false, defaultValue = "") String name) {
 		try {
 			String msg = demoService.test(name);

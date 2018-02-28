@@ -7,7 +7,7 @@
 <title>Dubbo Demo</title>
 </head>
 <body>
-<form action="test">
+<form action="/">
 <lable for="name"><input name="name" autofocus="autofocus" /></lable><button>Send</button><br /><br />
 <span>Request: ${param.name}</span><br />
 <span>Response: ${msg}</span>
