@@ -24,6 +24,6 @@ public class DemoServiceImpl implements DemoService {
 			logger.error("Error: ", e);
 			throw e;
 		}
-		return new DemoMessage(msg.getMsg(), new Date());
+		return new DemoMessage(str, new Date());
 	}
 }
