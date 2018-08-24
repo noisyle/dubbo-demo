@@ -1,5 +1,7 @@
 package com.noisyle.dubbodemo.service;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +15,15 @@ public class DemoServiceImpl implements DemoService {
 	@Autowired
 	private DemoDao demoDao;
 
-	public String test(String name) throws Exception {
-		logger.info("Request: {}", name);
+	public DemoMessage test(DemoMessage msg) throws Exception {
+		logger.info("Request: {}", msg.getMsg());
 		String str = null;
 		try {
-			str = demoDao.test(name);
+			str = demoDao.test(msg.getMsg());
 		} catch (Exception e) {
 			logger.error("Error: ", e);
 			throw e;
 		}
-		return str;
+		return new DemoMessage(msg.getMsg(), new Date());
 	}
 }

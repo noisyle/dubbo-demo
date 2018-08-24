@@ -1,5 +1,7 @@
 package com.noisyle.dubbodemo.controller;
 
+import java.util.Date;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.noisyle.dubbodemo.service.DemoMessage;
 import com.noisyle.dubbodemo.service.DemoService;
 
 @Controller
@@ -20,9 +23,9 @@ public class DemoController {
 	@RequestMapping(value = "/")
 	public String test(Model model, @RequestParam(required = false, defaultValue = "") String name) {
 		try {
-			String msg = demoService.test(name);
-			model.addAttribute("msg", msg);
-			logger.info("Response: {}", msg);
+		    DemoMessage msg = demoService.test(new DemoMessage(name, new Date()));
+			model.addAttribute("msg", msg.getMsg());
+			logger.info("Response: {}", msg.getMsg());
 			return "index";
 		} catch (Exception e) {
 			model.addAttribute("msg", e.getMessage());

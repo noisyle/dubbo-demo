@@ -10,5 +10,5 @@
 	<dubbo:registry protocol="${dubbo.registry.protocol}" address="${dubbo.registry.address}" check="false" />
 	<dubbo:protocol name="dubbo" port="-1" />
 	<dubbo:provider host="${dubbo.provider.host}" />
-	<dubbo:service interface="com.noisyle.dubbodemo.service.DemoService" ref="demoService" />
+	<dubbo:service interface="com.noisyle.dubbodemo.service.DemoService" ref="demoService" accesslog="true" />
 </beans>
