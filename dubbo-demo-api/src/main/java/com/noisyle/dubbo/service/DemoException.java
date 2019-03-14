@@ -1,4 +1,4 @@
-package com.noisyle.dubbodemo.service;
+package com.noisyle.dubbo.service;
 
 public class DemoException extends RuntimeException {
 	

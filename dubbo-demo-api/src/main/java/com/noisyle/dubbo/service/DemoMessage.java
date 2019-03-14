@@ -1,4 +1,4 @@
-package com.noisyle.dubbodemo.service;
+package com.noisyle.dubbo.service;
 
 import java.io.Serializable;
 import java.util.Date;
