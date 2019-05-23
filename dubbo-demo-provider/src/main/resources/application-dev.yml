@@ -1,7 +1,8 @@
-server:
-  port: 8001
-
-spring:
-  dubbo:
-    server: true
-    registry: multicast://224.5.6.7:1234
+dubbo:
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: N/A
+  scan:
+    basePackages: com.noisyle.dubbo.service

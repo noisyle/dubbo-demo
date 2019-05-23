@@ -3,13 +3,20 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.noisyle</groupId>
   <artifactId>dubbo-demo-parent</artifactId>
-  <version>0.2.0-SNAPSHOT</version>
+  <version>0.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>1.8</java.version>
+    <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
+    <dubbo.version>2.7.1</dubbo.version>
+  </properties>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.10.RELEASE</version>
+    <version>2.1.5.RELEASE</version>
   </parent>
 
   <modules>
@@ -17,11 +24,6 @@
     <module>dubbo-demo-provider</module>
     <module>dubbo-demo-consumer</module>
   </modules>
-
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>1.8</java.version>
-  </properties>
 
   <repositories>
     <repository>
@@ -45,38 +47,6 @@
         <groupId>com.noisyle</groupId>
         <artifactId>dubbo-demo-api</artifactId>
         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.alibaba.spring.boot</groupId>
-        <artifactId>dubbo-spring-boot-starter</artifactId>
-        <version>2.0.0</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.jboss.netty</groupId>
-            <artifactId>netty</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty</artifactId>
-        <version>3.10.5.Final</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.zookeeper</groupId>
-        <artifactId>zookeeper</artifactId>
-        <version>3.4.11</version>
-        <exclusions>
-          <exclusion>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      <dependency>
-        <groupId>com.101tec</groupId>
-        <artifactId>zkclient</artifactId>
-        <version>0.10</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

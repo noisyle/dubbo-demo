@@ -1,33 +1,20 @@
 package com.noisyle.dubbo.service;
 
-import java.util.Date;
-
+import org.apache.dubbo.config.annotation.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import com.alibaba.dubbo.config.annotation.Service;
-import com.noisyle.dubbo.repository.DemoDao;
+import org.springframework.beans.factory.annotation.Value;
 
 
-@Service(interfaceClass = IDemoService.class, timeout = 2000, retries = 2)
-@Component
+@Service(interfaceClass = IDemoService.class, timeout = 1000, retries = 0)
 public class DemoServiceImpl implements IDemoService {
 	final private static Logger logger = LoggerFactory.getLogger(DemoServiceImpl.class);
 	
-	@Autowired
-	private DemoDao demoDao;
+    @Value("${dubbo.application.name}")
+    private String serviceName;
 
-    public DemoMessage greeting(DemoMessage msg) throws Exception {
-		logger.info("Request: {}", msg.getMsg());
-		String str = null;
-		try {
-			str = demoDao.greeting(msg.getMsg());
-		} catch (Exception e) {
-			logger.error("Error: ", e);
-			throw e;
-		}
-		return new DemoMessage(str, new Date());
+    public String sayHello(String name) {
+		logger.info("Request: {}", name);
+		return String.format("[%s] : Hello, %s", serviceName, name);
 	}
 }

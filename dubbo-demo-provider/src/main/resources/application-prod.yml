@@ -1,7 +1,7 @@
-server:
-  port: 8001
-
-spring:
-  dubbo:
-    server: true
-    registry: zookeeper://127.0.0.1:2181
+dubbo:
+  protocol:
+    port: -1
+  registry:
+    address: zookeeper://192.168.96.91:2181
+  scan:
+    basePackages: com.noisyle.dubbo.service
