@@ -1,6 +1,10 @@
 server:
   port: 8000
 
-spring:
-  dubbo:
-    registry: multicast://224.5.6.7:1234
+dubbo:
+  application:
+    qosEnable: false
+  registry:
+    id: dev-registry
+    protocol: multicast
+    address: 224.5.6.7:12345

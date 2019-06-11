@@ -1,36 +1,31 @@
 package com.noisyle.dubbo.controller;
 
-import java.util.Date;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.noisyle.dubbo.service.DemoMessage;
-import com.noisyle.dubbo.service.IDemoService;
+import com.noisyle.dubbo.service.HelloService;
 
-@Controller
+@RestController
 public class DemoController {
 	final private static Logger logger = LoggerFactory.getLogger(DemoController.class);
+
+    @Reference(version = "1.0.0", check = false)
+    private HelloService demoService;
 	
-	@Reference(check=false)
-	private IDemoService demoService;
-	
-	@RequestMapping(value = "/")
-	public String test(Model model, @RequestParam(required = false, defaultValue = "") String name) {
+	@RequestMapping(value = "sayHello")
+	public ResponseEntity<Object> sayHello(@RequestParam(required = false, defaultValue = "world") String name) {
 		try {
-		    DemoMessage msg = demoService.greeting(new DemoMessage(name, new Date()));
-			model.addAttribute("msg", msg.getMsg());
-			logger.info("Response: {}", msg.getMsg());
-			return "index";
+	        String sayHello = demoService.sayHello(name);
+	        logger.debug("Response: {}", sayHello);
+	        return ResponseEntity.ok(sayHello);
 		} catch (Exception e) {
-			model.addAttribute("msg", e.getMessage());
-			logger.info("Error: ", e);
-			return "index";
+		    logger.error("Failed!", e);
+            throw e;
 		}
 	}
 }
