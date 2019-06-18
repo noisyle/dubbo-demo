@@ -1,8 +1,12 @@
+server:
+  port: 8010
+
 dubbo:
-  protocol:
-    name: dubbo
-    port: 12345
-  registry:
-    address: N/A
   scan:
     basePackages: com.noisyle.dubbo.service
+  application:
+    qosEnable: false
+  registry:
+    id: dev-registry
+    protocol: multicast
+    address: 224.5.6.7:12345

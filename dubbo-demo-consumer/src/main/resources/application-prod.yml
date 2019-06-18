@@ -1,3 +1,10 @@
+server:
+  port: 8000
+
 dubbo:
+  application:
+    qosEnable: false
   registry:
-    address: zookeeper://192.168.96.91:2181
+    id: prod-registry
+    protocol: zookeeper
+    address: 192.168.96.91:2181

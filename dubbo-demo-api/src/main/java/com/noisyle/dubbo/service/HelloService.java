@@ -1,5 +1,5 @@
 package com.noisyle.dubbo.service;
 
-public interface IDemoService {
+public interface HelloService {
     String sayHello(String name);
 }
