@@ -1,6 +1,6 @@
 package com.noisyle.dubbo.controller;
 
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import com.noisyle.dubbo.service.HelloService;
 public class DemoController {
     final private static Logger logger = LoggerFactory.getLogger(DemoController.class);
 
-    @Reference(version = "1.0.0", check = false)
+    @DubboReference(version = "1.0.0", check = false)
     private HelloService demoService;
 
     @RequestMapping(value = "sayHello")

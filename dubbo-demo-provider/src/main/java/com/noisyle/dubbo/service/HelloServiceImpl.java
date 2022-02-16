@@ -2,9 +2,9 @@ package com.noisyle.dubbo.service;
 
 import java.time.LocalTime;
 
-import org.apache.dubbo.config.annotation.Service;
+import org.apache.dubbo.config.annotation.DubboService;
 
-@Service(version = "1.0.0", timeout = 1000, retries = -1)
+@DubboService(version = "1.0.0", timeout = 1000, retries = -1)
 public class HelloServiceImpl implements HelloService {
 
     @Override
